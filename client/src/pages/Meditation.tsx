@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 export default function Meditation() {
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playedTime, setPlayedTime] = useState(0);
-  const [intervalId, setIntervalId] = useState(null);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
   const duration = 180; // Duration of the guided meditation in seconds (3 mins)
 
   // Start or stop audio and timer
@@ -21,13 +21,19 @@ export default function Meditation() {
     }
     if (isPlaying) {
       // Stop audio and clear timer
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      clearInterval(intervalId);
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
       setProgress(0);
     } else {
       // Play audio and start timer
-      audioRef.current.play();
+      if (audioRef.current) {
+        audioRef.current.play();
+      }
       const id = setInterval(() => {
         setProgress((prev) => (prev < 100 ? prev + 1 : 100));
       }, (duration * 1000) / 100);
