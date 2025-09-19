@@ -552,7 +552,7 @@ export default function Contact() {
                     <div className="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
                       <div>
                         <p className="font-medium">Email Support</p>
-                        <p className="text-sm text-gray-400">support@mindsync.app</p>
+                        <p className="text-sm text-gray-400">sidhantmishra2003@gmail.com</p>
                       </div>
                       <Button size="sm" variant="outline">Send Email</Button>
                     </div>
