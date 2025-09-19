@@ -17,7 +17,7 @@ export default function Landing_Page(){
             <HeroText/>
 
             <div className="flex space-x-4 p-4">
-              <Link to={`/`}><Button className="cursor-pointer" variant={`outline`}>Learn More</Button></Link>
+              <Link to={`/about`}><Button className="cursor-pointer" variant={`outline`}>Learn More</Button></Link>
               <Link to={`/start`}><Button className="cursor-pointer">Get Started</Button></Link>
             </div>
           </div>
